@@ -54,6 +54,10 @@ a:hover {
     border: 2px solid #4a5747;
 }
 
+.table td {
+    border: 2px solid #4a5747;
+}
+
 .table {
     margin: auto ;
     width: 80% ;
@@ -72,11 +76,28 @@ tbody tr:nth-of-type(odd) {
     border-color: #4a5747;
 }
 
+.table-data {
+    display: flex;
+    float: right;
+}
+
 thead {
     border-color: #4a5747;
 }
 
 .create-form {
+    text-align: right;
+    margin: 15px auto;
+    width: 80%;
+}
+
+.export-button{
+    background-color: #dd6e6e;
+    border: none;
+    color: #fffff0;
+}
+
+.export-form{
     text-align: right;
     margin: 15px auto;
     width: 80%;
@@ -94,6 +115,13 @@ thead {
 .btn-primary:hover {
     background-color:#758f75;
 }
+
+.buttons-section-table {
+    display: flex;
+}
+
+/* DETAIL VIEW */
+
 
 
 /* HEADER AND FOOTER SECTION */
