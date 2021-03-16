@@ -22,13 +22,13 @@
                         <a class="nav-link" href="homepage.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="general-view.php">Student</a>
+                        <a class="nav-link" href="general-view.php?page=student">Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="general-view.php">Teacher</a>
+                        <a class="nav-link" href="general-view.php?page=teacher">Teacher</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="general-view.php">Class</a>
+                        <a class="nav-link" href="general-view.php?page=class">Class</a>
                     </li>
                 </ul>
             </div>
