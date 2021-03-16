@@ -1,0 +1,138 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #fffff0;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+}
+
+h4 {
+    color: #dd6e6e;
+    text-align: center;
+}
+
+a {
+    color: #dd6e6e;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #fffff0;
+    text-decoration: none;
+}
+
+/* HOMEPAGE */
+
+.homepage-section {
+    height: 450px;
+    margin-top: 20px;
+}
+
+/* GENERAL VIEW */
+
+.general-section {
+    height: 450px;
+    margin-top: 20px;
+}
+
+.table thead th {
+    vertical-align: middle;
+    text-align: center;
+    border: 2px solid #4a5747;
+}
+
+.table tr {
+    border: 2px solid #4a5747;
+}
+
+.table {
+    margin: auto ;
+    width: 80% ;
+    background-color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #ffc45d82;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #fff8ed;
+}
+
+.table {
+    border-color: #4a5747;
+}
+
+thead {
+    border-color: #4a5747;
+}
+
+.create-form {
+    text-align: right;
+    margin: 15px auto;
+    width: 80%;
+}
+
+.search-form{
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: darkseagreen;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color:#758f75;
+}
+
+
+/* HEADER AND FOOTER SECTION */
+
+.navbar {
+    background-color: darkseagreen;
+    box-shadow: 0 0 3px #5d705d;
+    z-index: 1;
+    position: relative;
+}
+
+.footer {
+    background-color: #4a5747;
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    padding-top: 2rem;
+    margin-top: auto;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.footercontainer {
+    padding-left: 12%;
+    padding-right: 12%;
+    position: relative;
+}
+
+.copyright {
+    font-weight: bold;
+    color: #fffff0;
+}
+
+
+
+
+
+
