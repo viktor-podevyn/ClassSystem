@@ -2,9 +2,9 @@
 
 
 declare(strict_types=1);
-include_once "Entity.php";
+include_once "detail-view.php";
 
-class Teacher extends Entity
+class Teacher extends student
 {
 
 }
