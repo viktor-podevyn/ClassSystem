@@ -9,7 +9,7 @@ class TeacherController
 
 
         //load the view
-        require 'View/general-view.php';
+        require 'View/student-view.php';
         require 'View/detail-view.php';
     }
 }
