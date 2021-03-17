@@ -25,12 +25,16 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                foreach($students as $student):
+                    var_dump($student);
+                    ?>
                 <tr class="clickable" data-href="#">
                     <td>
-                        <?php echo $student[0]['name'];?>
+                        <?php echo $student['name'];?>
                     </td>
                     <td>
-                            <?php echo $class[0]['classLocation'];?>
+                        <?php echo $student['className'];?>
                     </td>
                     <td>
                         <div class="table-data">
@@ -42,6 +46,7 @@
                         </div>
                     </td>
                 </tr>
+                <?php endforeach;?>
                 </tbody>
             </table>
             <form class="create-form" method="post">
