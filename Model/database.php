@@ -6,7 +6,7 @@ class database
     private string $dbhost = "localhost:3306";
     private string $dbuser = "root";
     private string $dbpass = "NewVik";
-    private string $db = "classsystem";
+    private string $db = "crud";
 
     public function openConnection(): PDO
     {

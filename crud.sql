@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.62, for Win64 (AMD64)
 --
--- Host: localhost    Database: classsystem
+-- Host: localhost    Database: crud
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.17-MariaDB
 
@@ -23,16 +23,17 @@ DROP TABLE IF EXISTS `class`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `class` (
-  `className` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `classID` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `className` varchar(100) DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
   `studentID` tinyint(4) DEFAULT NULL,
   `teacherID` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`className`),
+  PRIMARY KEY (`classID`),
   KEY `class_FK` (`studentID`),
   KEY `class_FK_1` (`teacherID`),
   CONSTRAINT `class_FK` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`),
   CONSTRAINT `class_FK_1` FOREIGN KEY (`teacherID`) REFERENCES `teacher` (`teacherID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,'Antwerp',NULL,NULL),(2,'Brussels',NULL,NULL),(3,'Liege',NULL,NULL);
+INSERT INTO `class` VALUES (1,'Lamarr','Antwerp',NULL,NULL),(2,'Theanos','Brussels',NULL,NULL),(3,'Giertz','Liege',NULL,NULL),(4,'Hypathia','Gent',NULL,NULL),(5,'Hopper','Charleroi',NULL,NULL);
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,10 +58,10 @@ CREATE TABLE `student` (
   `firstName` varchar(100) DEFAULT NULL,
   `lastName` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `className` tinyint(4) DEFAULT NULL,
+  `classID` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`studentID`),
-  KEY `student_FK` (`className`),
-  CONSTRAINT `student_FK` FOREIGN KEY (`className`) REFERENCES `class` (`className`)
+  KEY `student_FK` (`classID`),
+  CONSTRAINT `student_FK` FOREIGN KEY (`classID`) REFERENCES `class` (`classID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,7 +102,7 @@ INSERT INTO `teacher` VALUES (1,'Koen','Eelen','koen@becode.org'),(2,'Tim','Grub
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'classsystem'
+-- Dumping routines for database 'crud'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -113,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-16 16:48:17
+-- Dump completed on 2021-03-17 15:48:29
