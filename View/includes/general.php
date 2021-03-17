@@ -7,9 +7,9 @@
             <div class="search-wrap">
                 <div class="container">
                     <h4>Look for a specific student via this search bar</h4>
-                    <form action="" method="onsubmit" class="search-form">
+                    <form action="../Model/search.php" method="post" class="search-form">
                         <button type="submit" value="search" id="searchButton">search</button>
-                        <input type="text" class="search">
+                        <input type="text" class="search" name="search[keyword]" value="<?php echo $search_keyword; ?>" id="keyword" maxlength='25'>
                     </form>
                 </div>
             </div>
@@ -48,8 +48,8 @@
                 <input type="hidden" name="id" value="<?php echo $student['id']?>" />
                 <a href="homepage.php" class="btn btn-primary" type="submit" name="create" value="Create new">Create new</a>
             </form>
-            <form class="export-form" method="post">
-                <input class="btn export-button" type="submit" name="export" value="Export to CSV">
+                <form class="export-form" method="post" action="../../model/csv.php">
+                <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
             </form>
         </div>
     </div>

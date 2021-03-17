@@ -1,10 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'classsystem';
+include_once 'database.php';
 
 if (isset($_POST["studentcsv"])) {
 
