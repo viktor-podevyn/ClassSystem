@@ -20,6 +20,7 @@ require 'Controller/ClassController.php';
     $controller = new StudentController();
     $controller->render($_GET, $_POST);
 }
+
 elseif ($_GET['page']??NULL === 'teacher'){
     $controller = new TeacherController();
     $controller->render($_GET, $_POST);
