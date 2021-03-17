@@ -27,33 +27,21 @@
                 <tbody>
                 <tr class="clickable" data-href="#">
                     <td>
-                        <a class="nav-link" href="detail-view.php">Alexandra Banica</a>
+                        <?php echo $student[0]['name'];?>
                     </td>
                     <td>
-                        Lamarr 4-27
-                    </td>
-                    <tr>
-                    <td>
-                        Viktor Podevyn
+                            <?php echo $class[0]['classLocation'];?>
                     </td>
                     <td>
-                        Lamarr 4-27
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Mark Hoogkamer
-                    </td>
-                    <td>
-                        Lamarr 4-27
                         <div class="table-data">
                 <a href="homepage.php" class="btn btn-primary">Edit</a>
                         <form method="post">
-                            <input type="hidden" name="id" value="<?php echo $student['id']?>" />
+                            <input type="hidden" name="id" value="" />
                             <input type="submit" name="delete" value="Delete" class="btn btn-danger">
                         </form>
                         </div>
                     </td>
+                </tr>
                 </tbody>
             </table>
             <form class="create-form" method="post">

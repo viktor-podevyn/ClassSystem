@@ -1,19 +1,18 @@
 <?php
 declare(strict_types=1);
 
-function openConnection(): PDO {
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-    $db = "classsystem";
+class database
+{
+    private string $dbhost = "localhost:3306";
+    private string $dbuser = "root";
+    private string $dbpass = "";
+    private string $db = "CRUD";
 
-    $driverOptions = [
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ];
-
-    return new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
+    public function openConnection(): PDO
+    {
+        $databaseInfo = 'mysql:host=' . $this->dbhost . ';dbname=' . $this->db;
+        $pdo = new PDO($databaseInfo, $this->dbuser, $this->dbpass);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        return $pdo;
+    }
 }
-
-$pdo = openConnection();
