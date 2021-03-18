@@ -7,6 +7,7 @@ require 'Model/Student.php';
 require 'Model/ClassLoader.php';
 require 'Model/StudentLoader.php';
 require 'Model/TeacherLoader.php';
+require 'View/credentials.php';
 
 //include all your controllers here
 require 'Controller/StudentController.php';
