@@ -1,36 +1,50 @@
 <?php
 declare(strict_types = 1);
 
-include_once 'database.php';
+$dbhost = "localhost:3306";
+$dbuser = "root";
+$dbpass = "";
+$db = "crud";
+$dbchar = 'utf8';
+
+$pdo = new PDO("mysql:host=".$dbhost.";dbname=".$db.";charset=".$dbchar,
+        $dbuser, $dbpass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
 if (isset($_POST["studentcsv"])) {
+    header('Content-Type: application/octet-stream');
+    header("Content-Transfer-Encoding: Binary");
+    header("Content-disposition: attachment; filename=\"students.csv\"");
 
-    $pdo = new PDO("mysql:host=$host;dbname=$database", $user, $password);
-    $sql = "SELECT * FROM student";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    $columnNames = array();
-    if (!empty($rows)) {
-        $firstRow = $rows[0];
-        foreach ($firstRow as $colName => $val) {
-            $columnNames[] = $colName;
-        }
+    $stmt = $pdo->prepare("SELECT * FROM student");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_NAMED)) {
+        echo implode(",", [$row['studentID'], $row['firstName'], $row['lastName'], $row['email'], $row['classID']]);
+        echo "\r\n";
     }
+}
 
-    $fileName = 'students.csv';
+if (isset($_POST["teachercsv"])) {
+    header('Content-Type: application/octet-stream');
+    header("Content-Transfer-Encoding: Binary");
+    header("Content-disposition: attachment; filename=\"teachers.csv\"");
 
-    header('Content-Type: application/excel');
-    header('Content-Disposition: attachment; filename="' . $fileName . '"');
-
-    $fp = fopen('php://output', 'w');
-
-    fputcsv($fp, $columnNames);
-
-    foreach ($rows as $row) {
-        fputcsv($fp, $row);
+    $stmt = $pdo->prepare("SELECT * FROM teacher");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_NAMED)) {
+        echo implode(",", [$row['teacherID'], $row['firstName'], $row['lastName'], $row['email']]);
+        echo "\r\n";
     }
+}
 
-    fclose($fp);
+if (isset($_POST["classcsv"])) {
+    header('Content-Type: application/octet-stream');
+    header("Content-Transfer-Encoding: Binary");
+    header("Content-disposition: attachment; filename=\"classes.csv\"");
+
+    $stmt = $pdo->prepare("SELECT * FROM class");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_NAMED)) {
+        echo implode(",", [$row['classID'], $row['className'], $row['location'], $row['studentID'], $row['teacherID']]);
+        echo "\r\n";
+    }
 }
