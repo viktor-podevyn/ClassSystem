@@ -9,21 +9,39 @@ class StudentController
     {
         $loader = new StudentLoader();
         $students = $loader->getUsersInfo();
-        // $student = $loader->getUserInfo($POST['id']);
 
-        if (isset($_POST['delete'])) {
+
+      if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
             echo 'Your record has been deleted';
         }
 
         if (isset($_POST['edit'])) {
             $loader->edit($_POST['id']);
-            echo 'Your record has been updated';
-            require 'View/edit.php';
         }
 
+        if (isset($_POST['create'])) {
+            $loader->create($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['className']);
+        }
+
+//        if(isset($_GET['id'])){
+//            $id = $_GET['id'];
+//            $result = $loader->getUserInfo($_GET['id']);
+//        var_dump($result);}
+
+        if (isset($_POST['view']) ){
+            if (isset($_POST['view']) === 'detail-view'){
+                $result = $loader->getUserInfo($_GET['id']);
+                require 'View/detail-view.php';
+            }
+            }
+        else {
+            require 'View/student-view.php';
+        }
+
+
         //load the view
-        require 'View/student-view.php';
-        require 'View/detail-view.php';
+      ;
+        require 'View/edit.php';
     }
 }
