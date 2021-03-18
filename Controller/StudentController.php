@@ -9,7 +9,7 @@ class StudentController
     {
         $loader = new StudentLoader();
         $students = $loader->getUsersInfo();
-        $student = $loader->getUsersInfo();
+        // $student = $loader->getUserInfo($POST['id']);
 
         if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
