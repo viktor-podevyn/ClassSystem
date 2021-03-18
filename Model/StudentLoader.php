@@ -5,7 +5,7 @@ class StudentLoader extends database
 
     public function getUserInfo($id): array
     {
-        $pdo = $this->openConnection()->prepare('select className,studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.studentID = class.studentID where student.studentID = :id');
+        $pdo = $this->openConnection()->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.studentID = class.studentID where student.studentID = :id');
         $pdo->bindValue(':id', $id);
         $pdo->execute();
         return $pdo->fetchAll();
@@ -15,12 +15,10 @@ class StudentLoader extends database
     {
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.classID = class.classID ');
-        //$pdo = $this->openConnection()->prepare('select className,studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.classID = class.classID');
         $handle->execute();
         return $handle->fetchAll();
 
     }
-
 
     public function setUsersInfo($firstName, $lastName, $email, $className)
     {
@@ -30,17 +28,19 @@ class StudentLoader extends database
 
     public function edit($id)
     {
-        $pdo = $this->openConnection()->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, className = :className where studentID = :id');
-        $pdo->bindValue(':id', $id);
-        $pdo->execute();
+        $pdo = $this->openConnection();
+        $handle = $pdo->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, className = :className where studentID = :id');
+        $handle->bindValue(':id', $id);
+        $handle->execute();
     }
 
-    public function delete()
+    public function delete($id): void
     {
-        $pdo = $this->openConnection()->prepare('delete from student where studentID = :id');
-        $pdo->execute();
+        $pdo = $this->openConnection();
+        $handle = $pdo->prepare('delete from student where studentID = :id');
+        $handle->bindValue(':id', $id);
+        $handle->execute();
     }
-
 
 
 }
