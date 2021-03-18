@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-$dbhost = "localhost:3306";
+$dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
 $db = "crud";
