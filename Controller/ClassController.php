@@ -8,7 +8,7 @@ class ClassController
     {
         $loader = new ClassLoader();
         $classes = $loader->getClassesInfo();
-        // $teacher = $loader->getTeachersInfo();
+        var_dump($loader->getClassesInfo());
 
         if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
@@ -21,8 +21,20 @@ class ClassController
             require 'View/edit.php';
         }
 
-        //load the view
-        require 'View/class-view.php';
-        require 'View/detail-view.php';
+
+        if (isset($_POST['view']) ){
+            if ($_POST['view'] === 'detail-view'){
+                require 'View/detail-view.php';
+            }
+            elseif ($_POST['view'] === 'edit'){
+                require 'View/editclass.php';
+            }
+        }
+        else {
+            require 'View/class-view.php';
+        }
+
+
+
     }
 }

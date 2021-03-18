@@ -8,7 +8,7 @@ class TeacherController
     {
         $loader = new TeacherLoader();
         $teachers = $loader->getTeachersInfo();
-        // $teacher = $loader->getTeachersInfo();
+
 
         if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
@@ -18,12 +18,26 @@ class TeacherController
         if (isset($_POST['edit'])) {
             $loader->edit($_POST['id']);
             echo 'Your record has been updated';
-            require 'View/edit.php';
         }
 
-        //load the view
-        require 'View/teacher-view.php';
-        require 'View/detail-view.php';
+//        if(isset($_GET['id'])){
+//            $id = $_GET['id'];
+//            $result = $loader->getTeacherInfo($_GET['id']);}
+
+
+        if (isset($_POST['view']) ){
+            if ($_POST['view'] === 'detail-view'){
+                require 'View/detail-view.php';
+            }
+            elseif ($_POST['view'] === 'edit'){
+                require 'View/editteacher.php';
+            }
+        }
+        else {
+            require 'View/teacher-view.php';
+        }
+
+
     }
 }
 
