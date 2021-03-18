@@ -31,7 +31,7 @@
                     <td><?php echo $student['firstName']; ?></td>
                     <td><?php echo $student['lastName']; ?></td>
                     <td><?php echo $student['email']; ?></td>
-                    <td><?php echo $student['className']; ?></td>
+                    <td><?php echo $student['classID']; ?></td>
                 </tr>
             </table>
         </div>
@@ -40,27 +40,27 @@
     <div class="row justify-content-center padding">
         <form method="post" action="#">
             <div class="form-group row">
-                <label for="firstName" class="col-sm-2 col-form-label">firstName</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="firstName" value="<?php echo $student['firstName'];?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="lastName" class="col-sm-2 col-form-label">lastName</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="lastName" value="<?php echo $student['lastName'];?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">email</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="email" value="<?php echo $student['email'];?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="className" class="col-sm-2 col-form-label">className</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="className" value="<?php echo $student['className'];?>">
+                    <select class="form-control form-control-sm">
+                        <?php foreach($classes as $class):?>
+                        <option value="<?php $class['classID'];?>"><?php echo $class['className'];?></option>
+                        <?php endforeach;?>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
