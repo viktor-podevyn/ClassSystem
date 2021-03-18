@@ -9,8 +9,18 @@ class StudentController
     {
         $loader = new StudentLoader();
         $students = $loader->getUsersInfo();
+        $student = $loader->getUsersInfo();
 
+        if (isset($_POST['delete'])) {
+            $loader->delete($_POST['id']);
+            echo 'Your record has been deleted';
+        }
 
+        if (isset($_POST['edit'])) {
+            $loader->edit($_POST['id']);
+            echo 'Your record has been updated';
+            require 'View/edit.php';
+        }
 
         //load the view
         require 'View/student-view.php';
