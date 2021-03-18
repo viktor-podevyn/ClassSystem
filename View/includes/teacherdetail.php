@@ -1,3 +1,4 @@
+
 <section class="general-section justify-content-center">
 
     <div class="row">
@@ -25,16 +26,17 @@
                     <th data-sortable="true" scope="col" data-field="Class">Class ID</th>
                 </tr>
                 </thead>
-                    <tr>
-                        <td><?php echo $student['studentID'];?></td>
-                        <td><?php echo $student['firstName']; ?></td>
-                        <td><?php echo $student['lastName']; ?></td>
-                        <td><?php echo $student['email']; ?></td>
-                        <td><?php echo $student['classID']; ?></td>
-                    </tr>
+                <tr>
+                    <td><?php echo $result['studentID']; ?></td>
+                    <td><?php echo $result['firstName']; ?></td>
+                    <td><?php echo $result['lastName']; ?></td>
+                    <td><?php echo $result['email']; ?></td>
+                    <td><?php echo $result['classID'];?></td>
+                </tr>
             </table>
         </div>
     </div>
 </section>
+
 
 
