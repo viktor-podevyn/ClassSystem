@@ -1,17 +1,38 @@
 <?php
 
-require_once 'database.php';
+$con = new PDO("mysql:host=localhost;dbname=crud",'root','');
 
-$search_keyword = '';
+if (isset($_POST["submit"])) {
+    $str = $_POST["search"];
+    $sth = $con->prepare("SELECT * FROM student WHERE Name = '$str'");
 
-if(!empty($_POST['search']['keyword'])) {
-    $search_keyword = $_POST['search']['keyword'];
+    $sth->setFetchMode(PDO:: FETCH_OBJ);
+    $sth -> execute();
+
+    if($row = $sth->fetch())
+    {
+        ?>
+        <br><br><br>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><?php echo $row->Name; ?></td>
+                <td><?php echo $row->Description;?></td>
+            </tr>
+
+        </table>
+        <?php
+    }
+
+
+    else{
+        echo "Name Does not exist";
+    }
+
+
 }
-$sql = 'SELECT * FROM student WHERE firstName LIKE :keyword OR lastName LIKE :keyword  :keyword ORDER BY id DESC ';
 
-$query = $sql;
-$pdo_statement = $pdo->prepare($query);
-$pdo_statement->bindValue(':keyword', '%' . $search_keyword . '%', PDO::PARAM_STR);
-$pdo_statement->execute();
-$result = $pdo_statement->fetchAll();
 ?>

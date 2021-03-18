@@ -10,9 +10,9 @@
             <div class="search-wrap">
                 <div class="container">
                     <h4>Look for a specific student via this search bar</h4>
-                    <form action="" method="onsubmit" class="search-form">
+                    <form action="Model/search.php" method="post" class="search-form">
                         <button type="submit" value="search" id="searchButton">search</button>
-                        <input type="text" class="search">
+                        <input type="text" class="search" name="search" value="" id="keyword" maxlength='25'>
                     </form>
                 </div>
             </div>
@@ -57,6 +57,9 @@
             </form>
             <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
+            </form>
+            <form class="export-form" method="post" name="studentxml" action="Model/xml.php">
+                <input class="btn export-button" type="submit" name="studentcsv" value="Export to XML" />
             </form>
         </div>
     </div>
