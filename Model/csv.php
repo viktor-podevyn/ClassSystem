@@ -1,11 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-include_once 'database.php';
+$dbhost = "localhost:3306";
+$dbuser = "root";
+$dbpass = "";
+$db = "crud";
 
 if (isset($_POST["studentcsv"])) {
 
-    $pdo = new PDO("mysql:host=$host;dbname=$database", $user, $password);
+    $pdo = new PDO("mysql:host=$dbhost;dbname=$db", $dbuser, $dbpass);
     $sql = "SELECT * FROM student";
     $statement = $pdo->prepare($sql);
     $statement->execute();

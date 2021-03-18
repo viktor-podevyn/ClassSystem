@@ -111,7 +111,7 @@
                 <input type="hidden" name="id" value="<?php echo $student['id']?>" />
                 <a href="homepage.php" class="btn btn-primary" type="submit" name="create" value="Create new">Create new</a>
             </form>
-                <form class="export-form" method="post" action="../../model/csv.php">
+            <form class="export-form" method="post" action="../../model/csv.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
             </form>
         </div>
