@@ -22,26 +22,21 @@
                 <tr class="justify-content-center">
                     <th data-sortable="true" scope="col" data-field="Name">Name</th>
                     <th data-sortable="true" scope="col" data-field="Class">Class</th>
+                    <th data-sortable="true" scope="col" data-field="Class">teacher</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable" data-href="#">
-                        <td>
-                            <?php echo $student['name'];?>
-                        </td>
-                        <td>
-                            <?php echo $student['className']; ?>
-                        </td>
-                        <td>
-                        <td>
-                            <div class="table-data">
-                                <form method="post">
-                                    <input type="hidden" name="id" value="<?php echo $student['studentID'];?>"/>
-                                    <input type="submit" name="edit" value="Edit" class="btn btn-primary">
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                <tr class="clickable" data-href="#">
+                    <td>
+                        <?php echo $student['name'];?>
+                    </td>
+                    <td>
+                        <?php echo $student['className']; ?>
+                    </td>
+                    <td>
+                        <?php echo $teacher['teacherID'];?>
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
@@ -55,7 +50,11 @@
                 <label for="lastname">Last name:</label>
                 <input type="text" name="lastname" id="lastname" required value="<?php echo htmlspecialchars($student['lastName']) ?>"/>
 
-                <input type="submit" class="btn btn-primary" type="submit" name="edit" value="<?php echo $student['studentID'];?>>
+                <form class="create-form" method="post">
+                    <input type="hidden" name="id" value=""/>
+                    <a href="#" class="btn btn-primary" type="submit" name="create" value="<?php echo $student['studentID'];?>">Create
+                        new</a>
+                </form>
             </form>
         </div>
     </div>

@@ -16,33 +16,23 @@
     </div>
     <div class="row justify-content-center padding">
         <div class="table-responsive">
-            <table class="table table-hover" data-toggle="table">
+            <table>
                 <thead>
                 <tr class="justify-content-center">
-                    <th data-sortable="true" scope="col" data-field="Name">Name</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Email</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Class</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Teacher</th>
+                    <th data-sortable="true" scope="col" data-field="Name">Student ID</th>
+                    <th data-sortable="true" scope="col" data-field="Class">First name</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Last name</th>
+                    <th data-sortable="true" scope="col" data-field="Class">E-mail address</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Class ID</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="clickable" data-href="#">
-                    <td>
-                        <?php echo $student['name'];
-                        var_dump($student);?>
-                    </td>
-                    <td>
-                        <?php echo $student['email'];
-                        var_dump($student['email']);?>
-                    </td>
-                    <td>
-                        <a class="nav-link" href="generalclass.php?page=class"><?php echo $student['className'];?></a>
-                    </td>
-                    <td>
-                        <a class="nav-link" href="general-view.php?page=teacher"><?php echo $teacher['teacherID'];?></a>
-                    </td>
-
-                </tbody>
+                <tr>
+                    <td><?php echo $result['studentID']; ?></td>
+                    <td><?php echo $result['firstName']; ?></td>
+                    <td><?php echo $result['lastName']; ?></td>
+                    <td><?php echo $result['email']; ?></td>
+                    <td><?php echo $result['classID'];?></td>
+                </tr>
             </table>
         </div>
     </div>
