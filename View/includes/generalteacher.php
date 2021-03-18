@@ -1,7 +1,4 @@
 
-
-
-
 <section class="general-section justify-content-center">
 
     <!--<h4>Welcome to the general  page </h4>-->
@@ -30,9 +27,15 @@
                 <tbody>
                 <?php
                 foreach ($teachers as $teacher):?>
+                <td>
                     <tr class="clickable" data-href="#">
                         <td>
-                            <a href="View/detail-view.php"><?php echo $teacher['name'];?></a>
+                            <div class="table-data">
+                        <form method="post">
+                            <input type="hidden" name="id" value="<?php echo $teacher['teacherID']; ?>"/>
+                            <button type="submit" name="view" value="detail-view"><?php echo $teacher['name'];?></button>
+                        </form>
+                            </div>
                         </td>
                         <td>
                             <?php echo $teacher['className']; ?>
@@ -55,11 +58,11 @@
                 <a href="homepage.php" class="btn btn-primary" type="submit" name="create" value="<?php echo $student['studentID'];?>">Create
                     new</a>
             </form>
-            <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">
-                <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
+            <form class="export-form" method="post" name="teachercsv" action="Model/csv.php">
+                <input class="btn export-button" type="submit" name="teachercsv" value="Export to CSV" />
             </form>
-            <form class="export-form" method="post" name="studentxml" action="Model/xml.php">
-                <input class="btn export-button" type="submit" name="studentcsv" value="Export to XML" />
+            <form class="export-form" method="post" name="teacherxml" action="Model/xml.php">
+                <input class="btn export-button" type="submit" name="teachercsv" value="Export to XML" />
             </form>
         </div>
     </div>

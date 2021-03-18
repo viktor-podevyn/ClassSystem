@@ -26,13 +26,14 @@
                 </thead>
                 <tbody>
                 <?php
-                foreach ($students as $student):?>
+                foreach ($students as $student):
+                    var_dump($student['studentID']);?>
                     <tr class="clickable" data-href="#">
-
                         <td>
                             <div class="table-data">
                                 <form method="post">
-                                    <a href="?=view?id= <?php echo $student['studentID'] ?>"><?php echo $student['name'];?></a>
+                                    <input type="hidden" name="id" value="<?php echo $student['studentID'];?>"/>
+                                    <button type="submit" name="view" value="detail-view"><?php echo $student['name'];?></button>
                                 </form>
                             </div>
                         </td>
@@ -42,10 +43,8 @@
                         <td>
                             <div class="table-data">
                                 <form method="post">
+                                    <input type="submit" name="view" value="edit" class="btn btn-primary">
                                     <input type="hidden" name="id" value="<?php echo $student['studentID']; ?>"/>
-                                    <a href="View/edit.php" class="btn btn-primary" type="submit" name="edit"
-                                       value="<?php echo $student['studentID']; ?>">
-                                        Edit</a>
                                     <input type="submit" name="delete" value="Delete" class="btn btn-danger">
                                 </form>
                             </div>
@@ -61,9 +60,6 @@
                     new</a>
             </form>
 
-            <form class="export-form" method="post" action="model/csv.php">
-                <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV"/>
-=======
             <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
             </form>
