@@ -1,7 +1,6 @@
 
 <section class="general-section justify-content-center">
 
-    <!--<h4>Welcome to the general  page </h4>-->
     <div class="row">
         <div class="col-xl-12 pa-0">
             <div class="search-wrap">
@@ -29,13 +28,20 @@
                 <tbody>
                 <tr class="clickable" data-href="#">
                     <td>
-                        Alexandra Banica
+                        <?php echo $student['name'];
+                        var_dump($student);?>
                     </td>
                     <td>
-                        banica9221@hotmail.be
+                        <?php echo $student['email'];
+                        var_dump($student['email']);?>
                     </td>
-                <td><a class="nav-link" href="general-view.php?page=class">class</a></td>
-                    <td><a class="nav-link" href="general-view.php?page=teacher">Teacher</a></td>
+                    <td>
+                        <a class="nav-link" href="generalclass.php?page=class"><?php echo $student['className'];?></a>
+                    </td>
+                    <td>
+                        <a class="nav-link" href="general-view.php?page=teacher"><?php echo $teacher['teacherID'];?></a>
+                    </td>
+
                 </tbody>
             </table>
         </div>

@@ -27,32 +27,31 @@
                 </thead>
                 <tbody>
                 <?php
-                foreach($students as $student):
-                    var_dump($student);
-                    ?>
-                <tr class="clickable" data-href="#">
-                    <td>
-                        <?php echo $student['name'];?>
-                    </td>
-                    <td>
-                        <?php echo $student['className'];?>
-                    </td>
-                    <td>
-                        <div class="table-data">
-                <a href="homepage.php" class="btn btn-primary">Edit</a>
-                        <form method="post">
-                            <input type="hidden" name="id" value="" />
-                            <input type="submit" name="delete" value="Delete" class="btn btn-danger">
-                        </form>
-                        </div>
-                    </td>
-                </tr>
-                <?php endforeach;?>
+                foreach ($students as $student):?>
+                    <tr class="clickable" data-href="#">
+                        <td>
+                            <a href="View/detail-view.php"><?php echo $student['name'];?></a>
+                        </td>
+                        <td>
+                            <?php echo $student['className']; ?>
+                        </td>
+                        <td>
+                            <div class="table-data">
+                                <a href="View/edit.php" class="btn btn-primary">Edit</a>
+                                <form method="post">
+                                    <input type="hidden" name="id" value="<?php echo $student['studentID'];?>"/>
+                                    <input type="submit" name="delete" value="Delete" class="btn btn-danger">
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
             <form class="create-form" method="post">
-                <input type="hidden" name="id" value="<?php echo $student['id']?>" />
-                <a href="homepage.php" class="btn btn-primary" type="submit" name="create" value="Create new">Create new</a>
+                <input type="hidden" name="id" value=""/>
+                <a href="homepage.php" class="btn btn-primary" type="submit" name="create" value="<?php echo $student['studentID'];?>">Create
+                    new</a>
             </form>
             <form class="export-form" method="post">
                 <input class="btn export-button" type="submit" name="export" value="Export to CSV">
