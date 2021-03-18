@@ -1,22 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-
-$dbhost = "localhost";
-=======
 $dbhost = "localhost:3306";
-
 $dbuser = "root";
 $dbpass = "";
 $db = "crud";
 $dbchar = 'utf8';
 
 $pdo = new PDO("mysql:host=".$dbhost.";dbname=".$db.";charset=".$dbchar,
-
-    $dbuser, $dbpass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-=======
         $dbuser, $dbpass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
 
 if (isset($_POST["studentcsv"])) {
     header('Content-Type: application/octet-stream');

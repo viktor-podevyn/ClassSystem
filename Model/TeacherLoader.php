@@ -5,10 +5,11 @@ class TeacherLoader extends database
 
     public function getTeacherInfo($id): array
     {
-        $pdo = $this->openConnection()->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from teacher left join class on teacher.teacherID = class.teacherID where teacher.teacherID = :id');
-        $pdo->bindValue(':id', $id);
-        $pdo->execute();
-        return $pdo->fetchAll();
+        $pdo = $this->openConnection()->prepare('SELECT * FROM teacher WHERE teacherID = :id');
+        $handle->bindValue(':id', $id);
+        $handle->execute();
+        $result =  $pdo->fetch();
+        return $result;
     }
 
     public function getTeachersInfo(): array
@@ -17,7 +18,6 @@ class TeacherLoader extends database
         $handle = $pdo->prepare('select className, teacher.teacherID,concat_ws(" ",firstName,lastName) as name from teacher left join class on class.teacherID = teacher.teacherID');
         $handle->execute();
         return $handle->fetchAll();
-
     }
 
     public function setTeachersInfo($firstName, $lastName, $email, $className)

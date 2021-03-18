@@ -3,14 +3,13 @@
 class StudentLoader extends database
 {
 
-    public function getUserInfo($id): array
+    public function getUserInfo($id): ?array
     {
-
-        $pdo = $this->openConnection()->prepare('SELECT * FROM student WHERE studendID = :id');
+        $pdo = $this->openConnection();
+        $handle = $pdo->prepare('SELECT * FROM student left join class on student.classID = class.classID WHERE student.studentID = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();
-        $result =  $pdo->fetch();
-        return $result;
+        return $handle->fetch();
     }
 
     public function getUsersInfo(): array
@@ -19,7 +18,6 @@ class StudentLoader extends database
         $handle = $pdo->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.classID = class.classID ');
         $handle->execute();
         return $handle->fetchAll();
-
     }
 
     public function create($firstName, $lastName, $email, $className): void
