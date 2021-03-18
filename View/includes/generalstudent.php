@@ -11,7 +11,7 @@
                 <div class="container">
                     <h4>Look for a specific student via this search bar</h4>
                     <form action="Model/search.php" method="post" class="search-form">
-                        <button type="submit" value="search" id="searchButton">search</button>
+                        <button type="submit" name="submit" value="search" id="searchButton">search</button>
                         <input type="text" class="search" name="search" value="" id="keyword" maxlength='25'>
                     </form>
                 </div>
