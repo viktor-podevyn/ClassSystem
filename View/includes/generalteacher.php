@@ -1,4 +1,7 @@
 
+
+
+
 <section class="general-section justify-content-center">
 
     <!--<h4>Welcome to the general  page </h4>-->
@@ -26,26 +29,19 @@
                 </thead>
                 <tbody>
                 <?php
-                foreach ($students as $student):?>
+                foreach ($teachers as $teacher):?>
                     <tr class="clickable" data-href="#">
-
                         <td>
-                            <div class="table-data">
-                                <form method="post">
-                                    <a href="?=view?id= <?php echo $student['studentID'] ?>"><?php echo $student['name'];?></a>
-                                </form>
-                            </div>
+                            <a href="View/detail-view.php"><?php echo $teacher['name'];?></a>
                         </td>
                         <td>
-                            <?php echo $student['className']; ?>
+                            <?php echo $teacher['className']; ?>
                         </td>
                         <td>
                             <div class="table-data">
+                                <a href="View/edit.php" class="btn btn-primary">Edit</a>
                                 <form method="post">
-                                    <input type="hidden" name="id" value="<?php echo $student['studentID']; ?>"/>
-                                    <a href="View/edit.php" class="btn btn-primary" type="submit" name="edit"
-                                       value="<?php echo $student['studentID']; ?>">
-                                        Edit</a>
+                                    <input type="hidden" name="id" value="<?php echo $teacher['teacherID'];?>"/>
                                     <input type="submit" name="delete" value="Delete" class="btn btn-danger">
                                 </form>
                             </div>
@@ -55,26 +51,17 @@
                 </tbody>
             </table>
             <form class="create-form" method="post">
-                <input type="hidden" name="id" value="<?php echo $student['studentID']; ?>"/>
-                <a href="View/create.php" class="btn btn-primary" type="submit" name="create"
-                   value="<?php echo $student['studentID']; ?>">Create
+                <input type="hidden" name="id" value=""/>
+                <a href="homepage.php" class="btn btn-primary" type="submit" name="create" value="<?php echo $student['studentID'];?>">Create
                     new</a>
             </form>
-
-            <form class="export-form" method="post" action="model/csv.php">
-                <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV"/>
-=======
             <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
             </form>
             <form class="export-form" method="post" name="studentxml" action="Model/xml.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to XML" />
-
             </form>
         </div>
     </div>
 </section>
-
-
-
 
