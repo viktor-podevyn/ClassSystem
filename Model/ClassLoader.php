@@ -5,14 +5,12 @@ class ClassLoader extends database
 
     public function getClassInfo($id): array
     {
-<<<<<<< HEAD
-        $pdo = $this->openConnection()->prepare('select className, class.classID from class left join teacher on class.classID = class.teacherID where class.classID = :id');
-=======
-        $pdo = $this->openConnection()->prepare('select className,class.classID from class where classID = :id');
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
-        $pdo->bindValue(':id', $id);
-        $pdo->execute();
-        return $pdo->fetch();
+
+        $pdo = $this->openConnection();
+        $handle = $pdo->prepare('select * from class where class.classID = :id');
+        $handle->bindValue(':id', $id);
+        $handle->execute();
+        return $handle->fetch();
     }
 
     public function getClassesInfo(): array

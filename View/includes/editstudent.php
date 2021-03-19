@@ -41,22 +41,22 @@
         <form method="post" action="#">
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="firstName" value="<?php echo $student['firstName'];?>">
+                    <input type="text" class="form-control" name="firstName" value="<?php echo $student['firstName'];?>">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="lastName" value="<?php echo $student['lastName'];?>">
+                    <input type="text" class="form-control" name="lastName" value="<?php echo $student['lastName'];?>">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email" value="<?php echo $student['email'];?>">
+                    <input type="text" class="form-control" name="email" value="<?php echo $student['email'];?>">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <select class="form-control form-control-sm">
+                    <select name="classID" class="form-control form-control-sm">
                         <?php foreach($classes as $class):?>
                         <option value="<?php $class['classID'];?>"><?php echo $class['className'];?></option>
                         <?php endforeach;?>

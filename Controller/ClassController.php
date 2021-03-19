@@ -1,59 +1,40 @@
 <?php
-declare(strict_types = 1);
+
+
+declare(strict_types=1);
 
 class ClassController
 {
     //render function with both $_GET and $_POST vars available if it would be needed.
-    public function render(array $GET,array $POST): void
+    public function render(array $GET, array $POST): void
     {
-        $loader = new ClassLoader();
-        $classes = $loader->getClassesInfo();
-<<<<<<< HEAD
-        // $teacher = $loader->getTeachersInfo();
-=======
-        var_dump($loader->getClassesInfo());
+        $classLoader = new ClassLoader();
+        $classes = $classLoader->getClassesInfo();
+
+        if (isset($_POST['edit'])) {
+            $class = $classLoader->getClassInfo($_POST['id']);
+        }
 
         if (isset($_POST['delete'])) {
-            $loader->delete($_POST['id']);
+            $classLoader->delete($_POST['id']);
             echo 'Your record has been deleted';
         }
 
-        if (isset($_POST['edit'])) {
-            $loader->edit($_POST['id']);
-            echo 'Your record has been updated';
-            require 'View/edit.php';
-        }
-
-
-        if (isset($_POST['view']) ){
-            if ($_POST['view'] === 'detail-view'){
-                require 'View/detail-view.php';
+        if (isset($_POST['view'])) {
+            if ($_POST['view'] === 'detail-view') {
+                $class = $classLoader->getClassInfo($_POST['id']);
+                require 'View/detail-class.php';
+            } elseif ($_POST['view'] === 'edit') {
+                $class = $classLoader->getClassInfo($_POST['id']);
+                $classes = $classLoader->getClassesInfo();
+                require 'View/edit-class.php';
             }
-            elseif ($_POST['view'] === 'edit'){
-                require 'View/editclass.php';
-            }
-        }
-        else {
+        } else {
             require 'View/class-view.php';
         }
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
 
-        if (isset($_POST['delete'])) {
-            $loader->delete($_POST['id']);
-            echo 'Your record has been deleted';
+        if (isset($_POST['save'])) {
+            $classLoader->edit($_POST['id'], $_POST['className'], $_POST['location'], $_POST['classID']);
         }
-
-        if (isset($_POST['edit'])) {
-            $loader->edit($_POST['id']);
-            echo 'Your record has been updated';
-            require 'View/edit.php';
-        }
-
-<<<<<<< HEAD
-        //load the view
-        require 'View/class-view.php';
-        require 'View/detail-view.php';
-=======
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
     }
 }

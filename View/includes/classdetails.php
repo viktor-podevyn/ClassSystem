@@ -19,24 +19,23 @@
             <table>
                 <thead>
                 <tr class="justify-content-center">
-                    <th data-sortable="true" scope="col" data-field="Name">Student ID</th>
-                    <th data-sortable="true" scope="col" data-field="Class">First name</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Last name</th>
-                    <th data-sortable="true" scope="col" data-field="Class">E-mail address</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Class ID</th>
+                    <th data-sortable="true" scope="col" data-field="Name">Class ID</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Class</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Location</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Teacher ID</th>
                 </tr>
                 </thead>
                 <tr>
-                    <td><?php echo 'CLASSS'; ?></td>
-
-
-
-
+                    <td><?php echo $class['classID']; ?></td>
+                    <td><?php echo $class['className']; ?></td>
+                    <td><?php echo $class['location']; ?></td>
+                    <td><?php echo $class['teacherID']; ?></td>
                 </tr>
             </table>
         </div>
     </div>
 </section>
+
 
 
 

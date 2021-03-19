@@ -19,19 +19,19 @@
             <table>
                 <thead>
                 <tr class="justify-content-center">
-                    <th data-sortable="true" scope="col" data-field="Name">Student ID</th>
-                    <th data-sortable="true" scope="col" data-field="Class">First name</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Last name</th>
-                    <th data-sortable="true" scope="col" data-field="Class">E-mail address</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Class ID</th>
+                    <th data-sortable="true" scope="col" data-field="Name">Teacher ID</th>
+                    <th data-sortable="true" scope="col" data-field="Class">First Name</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Last Name</th>
+                    <th data-sortable="true" scope="col" data-field="Class">E-mail Address</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Class</th>
                 </tr>
                 </thead>
                 <tr>
-                    <td><?php echo $result['studentID']; ?></td>
-                    <td><?php echo $result['firstName']; ?></td>
-                    <td><?php echo $result['lastName']; ?></td>
-                    <td><?php echo $result['email']; ?></td>
-                    <td><?php echo $result['classID'];?></td>
+                    <td><?php echo $teacher['teacherID']; ?></td>
+                    <td><?php echo $teacher['firstName']; ?></td>
+                    <td><?php echo $teacher['lastName']; ?></td>
+                    <td><?php echo $teacher['email']; ?></td>
+                    <td><?php echo $teacher['className'];?></td>
                 </tr>
             </table>
         </div>

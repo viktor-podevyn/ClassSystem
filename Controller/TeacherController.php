@@ -7,73 +7,36 @@ class TeacherController
     public function render(array $GET,array $POST): void
     {
         $loader = new TeacherLoader();
+        $classLoader = new ClassLoader();
         $teachers = $loader->getTeachersInfo();
-<<<<<<< HEAD
-        // $teacher = $loader->getTeachersInfo();
-=======
 
+        if (isset($_POST['edit'])) {
+            $student = $loader->getUserInfo($_POST['id']);
+        }
 
         if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
             echo 'Your record has been deleted';
         }
 
-        if (isset($_POST['edit'])) {
-            $loader->edit($_POST['id']);
-            echo 'Your record has been updated';
-        }
-
-//        if(isset($_GET['id'])){
-//            $id = $_GET['id'];
-//            $result = $loader->getTeacherInfo($_GET['id']);}
-
-
-        if (isset($_POST['view']) ){
+        if (isset($_POST['view'])){
             if ($_POST['view'] === 'detail-view'){
-                require 'View/detail-view.php';
+                $teacher = $loader->getTeacherInfo($_POST['id']);
+                require 'View/detail-teacher.php';
             }
             elseif ($_POST['view'] === 'edit'){
-                require 'View/editteacher.php';
-            }
-        }
-        else {
-            require 'View/teacher-view.php';
-        }
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
-
-        if (isset($_POST['delete'])) {
-            $loader->delete($_POST['id']);
-            echo 'Your record has been deleted';
-        }
-
-        if (isset($_POST['edit'])) {
-            $loader->edit($_POST['id']);
-            echo 'Your record has been updated';
-            require 'View/edit.php';
-        }
-
-        if(isset($_GET['id'])){
-            $id = $_GET['id'];
-            $result = $loader->getTeacherInfo($_GET['id']);}
-
-        if (isset($_POST['view']) ){
-            if ($_POST['view'] === 'detail-view'){
-                require 'View/detail-view.php';
-            }
-            elseif ($_POST['view'] === 'edit'){
-                require 'View/editteacher.php';
+                $teacher = $loader->getTeacherInfo($_POST['id']);
+                $classes= $classLoader->getClassesInfo();
+                require 'View/edit-teacher.php';
             }
         }
         else {
             require 'View/teacher-view.php';
         }
 
-<<<<<<< HEAD
-        //load the view
-        require 'View/teacher-view.php';
-        require 'View/detail-view.php';
-=======
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
+        if (isset($_POST['save'])) {
+            $loader->edit($_POST['id'],$_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['classID']);
+        }
     }
 }
 

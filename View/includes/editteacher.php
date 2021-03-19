@@ -1,7 +1,5 @@
 
 <section class="general-section justify-content-center">
-
-    <!--<h4>Welcome to the general  page </h4>-->
     <div class="row">
         <div class="col-xl-12 pa-0">
             <div class="search-wrap">
@@ -15,51 +13,63 @@
             </div>
         </div>
     </div>
+
     <div class="row justify-content-center padding">
         <div class="table-responsive">
-            <table class="table table-hover" data-toggle="table">
+            <table>
                 <thead>
                 <tr class="justify-content-center">
-                    <th data-sortable="true" scope="col" data-field="Name">Name</th>
-                    <th data-sortable="true" scope="col" data-field="Class">Class</th>
+                    <th data-sortable="true" scope="col" data-field="Name">Student ID</th>
+                    <th data-sortable="true" scope="col" data-field="Class">First name</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Last name</th>
+                    <th data-sortable="true" scope="col" data-field="Class">E-mail address</th>
+                    <th data-sortable="true" scope="col" data-field="Class">Class ID</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="clickable" data-href="#">
-                    <td>
-                        <?php echo $teacher['name'];?>
-                    </td>
-                    <td>
-                        <?php echo $teacher['classID']; ?>
-                    </td>
-                    <td>
-                    <td>
-                        <div class="table-data">
-                            <form method="post">
-                                <input type="hidden" name="id" value="<?php echo $teacher['teacherID'];?>"/>
-                                <input type="submit" name="edit" value="Edit" class="btn btn-primary">
-                            </form>
-                        </div>
-                    </td>
+                <tr>
+                    <td><?php echo $teacher['teacherID'];?></td>
+                    <td><?php echo $teacher['firstName']; ?></td>
+                    <td><?php echo $teacher['lastName']; ?></td>
+                    <td><?php echo $teacher['email']; ?></td>
+                    <td><?php echo $teacher['className']; ?></td>
                 </tr>
-                </tbody>
             </table>
-
-            <form method="post" id="edit-user">
-
-                <input type="hidden" name="id" value="<?php echo $teacher['teacherID']?>" />
-
-                <label for="firstname">First name:</label>
-                <input type="text" name="firstname" id="firstname" required value="<?php echo htmlspecialchars($teacher['firstName']) ?>"/>
-
-                <label for="lastname">Last name:</label>
-                <input type="text" name="lastname" id="lastname" required value="<?php echo htmlspecialchars($teacher['lastName']) ?>"/>
-
-                <input type="submit" class="btn btn-primary" type="submit" name="edit" value="<?php echo $teacher['teacherID'];?>>
-            </form>
         </div>
     </div>
 
+    <div class="row justify-content-center padding">
+        <form method="post" action="#">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstName" value="<?php echo $teacher['firstName'];?>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="lastName" value="<?php echo $teacher['lastName'];?>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" value="<?php echo $teacher['email'];?>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <select class="form-control form-control-sm">
+                        <?php foreach($classes as $class):?>
+                            <option value="<?php $class['classID'];?>"><?php echo $class['className'];?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" name="save" class="btn btn-primary">Save teacher</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </section>
 
 

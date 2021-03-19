@@ -5,18 +5,11 @@ class TeacherLoader extends database
 
     public function getTeacherInfo($id): array
     {
-<<<<<<< HEAD
-        $pdo = $this->openConnection()->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from teacher left join class on teacher.teacherID = class.teacherID where teacher.teacherID = :id');
-        $pdo->bindValue(':id', $id);
-        $pdo->execute();
-        return $pdo->fetchAll();
-=======
-        $pdo = $this->openConnection()->prepare('SELECT * FROM teacher WHERE teacherID = :id');
+        $pdo = $this->openConnection();
+        $handle = $pdo->prepare('SELECT * FROM teacher left join class on teacher.teacherID = class.teacherID WHERE teacher.teacherID = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();
-        $result =  $pdo->fetch();
-        return $result;
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
+        return $handle->fetch();
     }
 
     public function getTeachersInfo(): array
@@ -25,10 +18,6 @@ class TeacherLoader extends database
         $handle = $pdo->prepare('select className, teacher.teacherID,concat_ws(" ",firstName,lastName) as name from teacher left join class on class.teacherID = teacher.teacherID');
         $handle->execute();
         return $handle->fetchAll();
-<<<<<<< HEAD
-
-=======
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
     }
 
     public function setTeachersInfo($firstName, $lastName, $email, $className)
@@ -48,7 +37,7 @@ class TeacherLoader extends database
     public function delete($id): void
     {
         $pdo = $this->openConnection();
-        $handle = $pdo->prepare('delete from teacher where teacherID = :id');
+        $handle = $pdo->prepare('DELETE teacher FROM teacher LEFT JOIN class ON teacher.teacherID = class.teacherID WHERE className is null AND teacher.teacherID = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();
     }

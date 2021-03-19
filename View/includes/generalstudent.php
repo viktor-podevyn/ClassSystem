@@ -1,4 +1,3 @@
-
 <section class="general-section justify-content-center">
 
     <!--<h4>Welcome to the general  page </h4>-->
@@ -26,19 +25,7 @@
                 </thead>
                 <tbody>
                 <?php
-<<<<<<< HEAD
                 foreach ($students as $student):?>
-                    <td>
-                        <div class="table-data">
-                            <form method="post">
-                                <input type="hidden" name="id" value="<?php echo $student['studentID']; ?>"/>
-                                <button type="submit" name="view" value="detail-view"><?php echo $student['name'];?></button>
-                            </form>
-                        </div>
-                    </td>
-=======
-                foreach ($students as $student):
-                    var_dump($student['studentID']);?>
                     <tr class="clickable" data-href="#">
                         <td>
                             <div class="table-data">
@@ -51,7 +38,6 @@
                         <td>
                             <?php echo $student['className']; ?>
                         </td>
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
                         <td>
                             <div class="table-data">
                                 <form method="post">
@@ -75,14 +61,8 @@
             <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
             </form>
-            <form class="export-form" method="post" name="studentxml" action="Model/xml.php">
-                <input class="btn export-button" type="submit" name="studentcsv" value="Export to XML" />
 
-            </form>
         </div>
     </div>
 </section>
-
-
-
 

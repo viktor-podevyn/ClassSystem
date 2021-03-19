@@ -5,19 +5,11 @@ class StudentLoader extends database
 
     public function getUserInfo($id): ?array
     {
-<<<<<<< HEAD
-        $pdo = $this->openConnection()->prepare('SELECT * FROM student WHERE studendID = :id');
-        $handle->bindValue(':id', $id);
-        $handle->execute();
-        $result =  $pdo->fetch();
-        return $result;
-=======
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('SELECT * FROM student left join class on student.classID = class.classID WHERE student.studentID = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();
         return $handle->fetch();
->>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
     }
 
     public function getUsersInfo(): array
@@ -28,14 +20,14 @@ class StudentLoader extends database
         return $handle->fetchAll();
     }
 
-    public function create($firstName, $lastName, $email, $className): void
+    public function create($firstName, $lastName, $email, $classID): void
     {
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('insert into student (firstName,lastName,email,className) values (:firstName,:lastName,:email, :className)');
         $handle->bindValue(':firstName', $firstName);
         $handle->bindValue(':lastName', $lastName);
         $handle->bindValue(':email', $email);
-        $handle->bindValue(':className', $className);
+        $handle->bindValue(':className', $classID);
         $handle->execute();
     }
 
@@ -44,10 +36,10 @@ class StudentLoader extends database
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, classID = :classID where studentID = :id');
         $handle->bindValue(':id', $id);
-        $handle->bindValue(':firstName', $firstName);
-        $handle->bindValue(':lastName', $lastName);
-        $handle->bindValue(':email', $email);
-        $handle->bindValue(':classID', $classID);
+        $handle->bindValue(':firstName', $_POST['firstName']);
+        $handle->bindValue(':lastName', $_POST['lastName']);
+        $handle->bindValue(':email', $_POST['email']);
+        $handle->bindValue(':classID', $_POST['classID']);
         $handle->execute();
     }
 
