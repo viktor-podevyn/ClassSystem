@@ -2,17 +2,43 @@
 
 class Student
 {
-    private $name;
+    private int $studentID;
+    private string $firstName;
+    private string $lastName;
+    private string $email;
 
-    public function setName($name): void
+
+    public function __construct(int $studentID, string $firstName, string $lastName, string $email)
     {
-        $this->name = $name;
+        $this->studentID = $studentID;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
     }
 
-    public function getName() : string
+    public function getStudentID(): int
     {
-        return $this->name;
+        return $this->studentID;
     }
+
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
 
 
 }

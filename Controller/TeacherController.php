@@ -8,7 +8,38 @@ class TeacherController
     {
         $loader = new TeacherLoader();
         $teachers = $loader->getTeachersInfo();
+<<<<<<< HEAD
         // $teacher = $loader->getTeachersInfo();
+=======
+
+
+        if (isset($_POST['delete'])) {
+            $loader->delete($_POST['id']);
+            echo 'Your record has been deleted';
+        }
+
+        if (isset($_POST['edit'])) {
+            $loader->edit($_POST['id']);
+            echo 'Your record has been updated';
+        }
+
+//        if(isset($_GET['id'])){
+//            $id = $_GET['id'];
+//            $result = $loader->getTeacherInfo($_GET['id']);}
+
+
+        if (isset($_POST['view']) ){
+            if ($_POST['view'] === 'detail-view'){
+                require 'View/detail-view.php';
+            }
+            elseif ($_POST['view'] === 'edit'){
+                require 'View/editteacher.php';
+            }
+        }
+        else {
+            require 'View/teacher-view.php';
+        }
+>>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
 
         if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
@@ -37,8 +68,12 @@ class TeacherController
             require 'View/teacher-view.php';
         }
 
+<<<<<<< HEAD
         //load the view
         require 'View/teacher-view.php';
         require 'View/detail-view.php';
+=======
+>>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
     }
 }
+

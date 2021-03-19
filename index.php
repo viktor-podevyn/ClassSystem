@@ -21,6 +21,7 @@ if (isset($_GET['page'])){
         $controller->render($_GET, $_POST);
     }
 
+<<<<<<< HEAD
     elseif ($_GET['page'] === 'teacher'){
         $controller = new TeacherController();
         $controller->render($_GET, $_POST);
@@ -30,5 +31,21 @@ if (isset($_GET['page'])){
         $controller->render($_GET, $_POST);
     }
 }
+
+=======
+if(isset($_GET['page']) && $_GET['page'] === 'student') {
+    $controller = new StudentController();
+    $controller->render($_GET, $_POST);
+}
+elseif ($_GET['page']??NULL === 'teacher'){
+    $controller = new TeacherController();
+    $controller->render($_GET, $_POST);
+}
+else {
+    $controller = new ClassController();
+    $controller->render($_GET, $_POST);
+}
+>>>>>>> 4677e1615f9bcc5ae212bb9b691fe5b179549a86
+
 
 
