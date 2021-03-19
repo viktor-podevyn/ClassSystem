@@ -31,11 +31,15 @@ class StudentLoader extends database
         $handle->execute();
     }
 
-    public function edit($id): void
+    public function edit($id,$firstName, $lastName, $email, $classID): void
     {
         $pdo = $this->openConnection();
-        $handle = $pdo->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, className = :className where studentID = :id');
+        $handle = $pdo->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, classID = :classID where studentID = :id');
         $handle->bindValue(':id', $id);
+        $handle->bindValue(':firstName', $firstName);
+        $handle->bindValue(':lastName', $lastName);
+        $handle->bindValue(':email', $email);
+        $handle->bindValue(':classID', $classID);
         $handle->execute();
     }
 
