@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 $dbhost = "localhost:3306";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "NewVik";
 $db = "crud";
 $dbchar = 'utf8';
 

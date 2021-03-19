@@ -5,10 +5,11 @@ class StudentLoader extends database
 
     public function getUserInfo($id): array
     {
-        $pdo = $this->openConnection()->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.studentID = class.studentID where student.studentID = :id');
-        $pdo->bindValue(':id', $id);
-        $pdo->execute();
-        return $pdo->fetchAll();
+        $pdo = $this->openConnection()->prepare('SELECT * FROM student WHERE studendID = :id');
+        $handle->bindValue(':id', $id);
+        $handle->execute();
+        $result =  $pdo->fetch();
+        return $result;
     }
 
     public function getUsersInfo(): array

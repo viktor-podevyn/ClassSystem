@@ -30,13 +30,14 @@
                 <tbody>
                 <?php
                 foreach ($students as $student):?>
-                    <tr class="clickable" data-href="#">
-                        <td>
-                            <a href="View/detail-view.php"><?php echo $student['name'];?></a>
-                        </td>
-                        <td>
-                            <?php echo $student['className']; ?>
-                        </td>
+                    <td>
+                        <div class="table-data">
+                            <form method="post">
+                                <input type="hidden" name="id" value="<?php echo $student['studentID']; ?>"/>
+                                <button type="submit" name="view" value="detail-view"><?php echo $student['name'];?></button>
+                            </form>
+                        </div>
+                    </td>
                         <td>
                             <div class="table-data">
                                 <a href="View/edit.php" class="btn btn-primary">Edit</a>

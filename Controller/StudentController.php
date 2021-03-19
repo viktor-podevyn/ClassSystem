@@ -11,6 +11,8 @@ class StudentController
         $students = $loader->getUsersInfo();
         $student = $loader->getUsersInfo();
 
+        //$result = $loader->getUserInfo($_POST['id']);
+
         if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
             echo 'Your record has been deleted';
@@ -22,8 +24,22 @@ class StudentController
             require 'View/edit.php';
         }
 
-        //load the view
-        require 'View/student-view.php';
-        require 'View/detail-view.php';
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $result = $loader->getUserInfo($_GET['id']);}
+
+
+        if (isset($_POST['view']) ){
+            if ($_POST['view'] === 'detail-view'){
+                require 'View/detail-view.php';
+            }
+            elseif ($_POST['view'] === 'edit'){
+                require 'View/edit.php';
+            }
+        }
+        else {
+            require 'View/student-view.php';
+        }
+
     }
 }
