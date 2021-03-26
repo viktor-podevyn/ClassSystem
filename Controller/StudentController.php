@@ -16,34 +16,27 @@ class StudentController
         }
 
         if ((isset($_POST['save'])) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email'])) {
-            if (empty($_POST['id'])) {
-                $loader->create($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['classID']);
-            } else {
-                $loader->edit($_POST['id'],$_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['classID']);
-            }
+            $loader->save(new Student($_POST['id'],$_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['classID']));
         }
 
+        $view = 'View/student-view.php';
         if (isset($_POST['view'])){
             if ($_POST['view'] === 'detail-view'){
                 $student = $loader->getUserInfo($_POST['id']);
-                require 'View/detail-view.php';
+                $view = 'View/detail-view.php';
             }
             elseif ($_POST['view'] === 'edit'){
                 $student = $loader->getUserInfo($_POST['id']);
                 $classes= $classLoader->getClassesInfo();
-                require 'View/edit.php';
+                $view = 'View/edit.php';
             }
             elseif ($_POST['view'] === 'create-new') {
                 // $student = $loader->create($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['className']);
-                require 'View/create.php';
+                $view = 'View/create.php';
             }
         }
-        else {
-            require 'View/student-view.php';
-        }
-
-        if (isset($_POST['save'])) {
-            $loader->edit($_POST['id'],$_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['classID']);
-        }
+        require $view;
     }
+
+
 }

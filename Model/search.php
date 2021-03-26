@@ -4,7 +4,9 @@ $con = new PDO("mysql:host=localhost;dbname=crud",'root','');
 
 if (isset($_POST["submit"])) {
     $str = $_POST["search"];
-    $sth = $con->prepare("SELECT * FROM student WHERE firstName = '$str'");
+
+    $sth = $con->prepare("SELECT * FROM student WHERE :search");
+    $sth->bindValue('search', $str);
 
     $sth->setFetchMode(PDO:: FETCH_OBJ);
     $sth -> execute();

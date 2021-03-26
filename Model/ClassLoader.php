@@ -19,13 +19,6 @@ class ClassLoader extends database
         $handle = $pdo->prepare('select className, class.classID, location from class');
         $handle->execute();
         return $handle->fetchAll();
-
-    }
-
-    public function setClassesInfo($classID, $className, $location, $teacherID)
-    {
-        $pdo = $this->openConnection()->prepare('insert into class (classID, className, location, teacherID) values (:classID,:className,:location, :teacherID)');
-        $pdo->execute([$classID, $className, $location, $teacherID]);
     }
 
     public function edit($id)

@@ -12,15 +12,22 @@ class StudentLoader extends database
         return $handle->fetch();
     }
 
+    /** @return Student[] */
     public function getUsersInfo(): array
     {
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('select className,student.studentID,concat_ws(" ",firstName,lastName) as name from student left join class on student.classID = class.classID ');
         $handle->execute();
+
+        $rows = $handle->fetchAll();
+        foreach($rows AS ['studentID' => $studentId]) {
+            $rows[] = new Student($studentId);
+        }
+
         return $handle->fetchAll();
     }
 
-    public function create($firstName, $lastName, $email, $classID): void
+    private function create(string $firstName, string $lastName, string $email, string $classID): void
     {
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('insert into student (firstName,lastName,email,className) values (:firstName,:lastName,:email, :className)');
@@ -31,7 +38,7 @@ class StudentLoader extends database
         $handle->execute();
     }
 
-    public function edit($id,$firstName, $lastName, $email, $classID): void
+    private function edit($id,$firstName, $lastName, $email, $classID): void
     {
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, classID = :classID where studentID = :id');
@@ -43,13 +50,20 @@ class StudentLoader extends database
         $handle->execute();
     }
 
-    public function delete($id): void
+    public function save(Student $student)
+    {
+        if($student->getId()) {
+            $this->edit($student);
+        } else {
+            $this->create($student);
+        }
+    }
+
+    public function delete(Student $student): void
     {
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('delete from student where studentID = :id');
-        $handle->bindValue(':id', $id);
+        $handle->bindValue(':id', $student->getId());
         $handle->execute();
     }
-
-
 }

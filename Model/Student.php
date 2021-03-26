@@ -16,7 +16,7 @@ class Student
         $this->email = $email;
     }
 
-    public function getStudentID(): int
+    public function getId(): int
     {
         return $this->studentID;
     }
@@ -39,7 +39,10 @@ class Student
         return $this->email;
     }
 
-
+    public function getFullName()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
 
 }
 
